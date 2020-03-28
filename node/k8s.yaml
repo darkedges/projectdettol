@@ -1,0 +1,24 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: officeworks
+  labels:
+    name: officeworks
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: officeworks
+spec:
+  selector:
+    matchLabels:
+      app: officeworks
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: officeworks
+    spec:
+      containers:
+      - name: officeworks
+        image: darkedges/officeworks:1.0.0

@@ -1,0 +1,31 @@
+<div class='parent'>
+  <div class='child float-left-child' *ngFor="let product of products">
+    <h1>{{ product.sku }} </h1>
+    <img class="center"
+      src="https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/LE0144556_dettol_instant_hand_sanitizer_refresh_50ml.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+      *ngIf="product.sku==='LE0144556'">
+    <img class="center"
+      src="https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/LE0095655_dettol_instant_hand_sanitizer_original_200ml.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+      *ngIf="product.sku==='LE0095655'">
+    <img class="center"
+      src="https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/LE0095654_.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+      *ngIf="product.sku==='LE0095654'">
+    <img class="center" src="https://images.officeworks.com.au/api/2/img/https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/JBPROFMBBK_B_professional_ergonomic_extra_heavy_duty_chair_black.jpg/fit?size=190x190&auth=MjA5OTcwODkwMg__"
+    *ngIf="product.sku==='JBPROFMBBK'">
+    
+    <table>
+      <tr>
+        <th>storeName</th>
+        <th>clickAndCollectQuantity</th>
+      </tr>
+      <tr *ngFor="let store of product.data | keyvalue">
+        <td>{{ store.value.storeName }}</td>
+        <td align="center"
+          [ngClass]="{greenClass: store.value.clickAndCollectQuantity>0, redClass: (store.value.clickAndCollectQuantity==0 || store.value.clickAndCollectQuantity===store.value.deliveryQuantity || !store.value.clickAndCollectQuantity ), orangeClass: store.value.clickAndCollectQuantity<=5}">
+          <div *ngIf="store.value.clickAndCollectQuantity">{{ store.value.clickAndCollectQuantity }}</div>
+          <div *ngIf="!store.value.clickAndCollectQuantity">0</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

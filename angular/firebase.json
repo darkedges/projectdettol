@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "projectdettol",
+      "public": "dist/projectdettol",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
